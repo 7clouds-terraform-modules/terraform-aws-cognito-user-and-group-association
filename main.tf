@@ -18,4 +18,3 @@ resource "aws_cognito_user_in_group" "this" {
   group_name   = var.GROUP_NAME
   username     = var.CREATE_COGNITO_USER == true ? aws_cognito_user.this[count.index].username : var.USER_NAME
 }
-

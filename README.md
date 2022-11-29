@@ -23,6 +23,7 @@ module "cognito_user" {
   USER_PASSWORD = "yourpasswordhere" #respecting the user pool's conditions
   ASSOCIATE_USER_TO_GROUP = true # This boolean validates the creation of the association resource
   GROUP_NAME = "admin" # If the variable above is set true, you must inform the pre-existing group you would like to associate this user to
+}
 ```
 
 <!-- BEGIN_TF_DOCS -->

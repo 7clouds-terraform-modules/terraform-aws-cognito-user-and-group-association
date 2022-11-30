@@ -1,5 +1,4 @@
 resource "aws_cognito_user" "this" {
-  count                    = var.CREATE_COGNITO_USER == true ? 1 : 0
   user_pool_id             = var.USER_POOL_ID
   username                 = var.USER_NAME
   attributes               = var.USER_ATTRIBUTES
@@ -13,8 +12,8 @@ resource "aws_cognito_user" "this" {
 }
 
 resource "aws_cognito_user_in_group" "this" {
-  count        = var.ASSOCIATE_USER_TO_GROUP == true ? 1 : 0
+  count        = length(var.GROUP_LIST) == 0 ? 0 : length(var.GROUP_LIST)
   user_pool_id = var.USER_POOL_ID
-  group_name   = var.GROUP_NAME
-  username     = var.CREATE_COGNITO_USER == true ? aws_cognito_user.this[count.index].username : var.USER_NAME
+  group_name   = var.GROUP_LIST[count.index]
+  username     = aws_cognito_user.this.username
 }

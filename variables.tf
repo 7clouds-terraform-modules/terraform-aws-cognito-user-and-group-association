@@ -10,12 +10,6 @@ variable "USER_NAME" {
 }
 
 # OPTIONAL
-variable "CREATE_COGNITO_USER" {
-  description = "Boolean to choose wether to create or not a user for cognito"
-  type        = bool
-  default     = true
-}
-
 variable "USER_ATTRIBUTES" {
   description = "A map that contains user attributes and attribute values to be set for the user"
   type        = map(string)
@@ -64,15 +58,10 @@ variable "VALIDATION_DATA" {
   default     = {}
 }
 
-variable "ASSOCIATE_USER_TO_GROUP" {
-  description = "Boolean to choose wether to associate a user to a group or not"
-  type        = bool
-  default     = false
-}
-
-variable "GROUP_NAME" {
-  description = "The name of the group to which the user is to be added"
-  type        = string
+variable "GROUP_LIST" {
+  description = "Group list for user association"
+  type        = list(string)
+  default     = []
 }
 
 
